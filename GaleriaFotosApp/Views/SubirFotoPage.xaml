@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GaleriaFotosMaui.Views.SubirFotoPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:GaleriaFotosMaui.ViewModels"
+    Title="Subir Foto"
+    BackgroundColor="{StaticResource White}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+
+            <Border
+                BackgroundColor="#FFF3CD"
+                Stroke="#FFEEBA"
+                Padding="12,8">
+                <Label Text="{Binding Mensaje}"  TextColor="#856404" FontSize="12" HorizontalOptions="Center" />
+            </Border>
+
+            <Label Text="📤 Subir nueva foto" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource Primary}" />
+
+            <Border
+                HeightRequest="220"
+                Padding="0"
+                BackgroundColor="{StaticResource LightGray}">
+                <Grid>
+                    <Label
+                        Text="Sin imagen seleccionada"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        TextColor="{StaticResource DarkGray}" />
+                    <Image Source="{Binding Imagen}"
+                        Aspect="AspectFill" />
+                </Grid>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Button
+                    Grid.Column="0"
+                    Text="📷 Cámara"
+                    Command="{Binding TomarFotoCommand}"
+
+                    BackgroundColor="{StaticResource Secondary}"
+                    TextColor="{StaticResource Primary}"
+                    CornerRadius="8"
+                    HeightRequest="44" />
+                <Button
+                    Grid.Column="1"
+                    Text="🖼️ Galería"
+                    BackgroundColor="{StaticResource Secondary}"
+                    TextColor="{StaticResource Primary}"
+                    CornerRadius="8"
+                    HeightRequest="44" />
+            </Grid>
+
+            <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" Color="{StaticResource Primary}" />
+
+            <Button
+                Text="⬆️ Subir Foto"
+                Command="{Binding SubirFotoCommand}"
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="White"
+                CornerRadius="8"
+                HeightRequest="50" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

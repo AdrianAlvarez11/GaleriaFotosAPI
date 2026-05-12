@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GaleriaFotosMaui.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:GaleriaFotosMaui.ViewModels"
+    Title="Iniciar Sesión"
+    BackgroundColor="{StaticResource White}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="32,60,32,32" Spacing="16">
+
+            <Label
+                Text="📷 Galería Fotos"
+                FontSize="32"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="{StaticResource Primary}" />
+
+            <Label
+                Text="Inicia sesión para continuar"
+                FontSize="14"
+                HorizontalOptions="Center"
+                TextColor="{StaticResource DarkGray}"
+                Margin="0,0,0,20" />
+
+            <Entry
+                Placeholder="Nombre de usuario"
+                PlaceholderColor="Gray"
+                TextColor="Black"
+                Text="{Binding NombreUsuario}"
+                ReturnType="Next" />
+
+            <Entry
+                Placeholder="PIN (4-6 dígitos)"
+                PlaceholderColor="Gray"
+                TextColor="Black"
+                Text="{Binding Pin}"
+                IsPassword="True"
+                Keyboard="Numeric"
+                ReturnType="Done"
+                ReturnCommand="{Binding LoginCommand}" />
+
+            <Label
+                Text="{Binding MensajeError}"
+                TextColor="{StaticResource Danger}"
+                FontSize="12" />
+
+            <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="{StaticResource Primary}" />
+
+            <Button
+                Text="Iniciar Sesión"
+                Command="{Binding LoginCommand}"
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="White"
+                CornerRadius="8"
+                HeightRequest="48" />
+
+            <Button
+                Text="¿No tienes cuenta? Regístrate"
+                Command="{Binding IrARegistroCommand}"
+                BackgroundColor="Transparent"
+                TextColor="{StaticResource Primary}"
+                BorderWidth="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

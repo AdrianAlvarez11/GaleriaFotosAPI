@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="GaleriaFotosAPI/GaleriaFotosAPI.csproj" />
+  <Project Path="GaleriaFotosApp/GaleriaFotosApp.csproj" Id="82b21641-e290-4852-949b-fa759e2613c2">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>
