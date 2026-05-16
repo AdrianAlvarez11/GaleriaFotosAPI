@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using GaleriaFotosApp.Models.DTOs;
 using GaleriaFotosApp.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ namespace GaleriaFotosApp.ViewModels
 {
     public partial class FotosViewmodel : ObservableObject
     {
+        public ObservableCollection<FotoDTOs.FotoDto> Fotos { get; set; } = new();
         public FotosViewmodel(FotoService service)
         {
             this.service = service;
@@ -24,6 +27,13 @@ namespace GaleriaFotosApp.ViewModels
         [ObservableProperty]
         private string? rutaImagen;
         private readonly FotoService service;
+
+        public async Task DescargarFotos()
+        {
+            Fotos.Clear();
+            var fotos = await service.GetFotos();
+            fotos.ForEach(x=>Fotos.Add(x));
+        }
 
         [RelayCommand]
         public async Task SubirFoto()

@@ -47,14 +47,15 @@
                         <Grid RowDefinitions="200,Auto">
 
                             <Image
+                                Source="{Binding NombreArchivo}"
                                 Grid.Row="0"
                                 Aspect="AspectFill"
                                 HeightRequest="200" />
 
                             <Grid Grid.Row="1" Padding="12,8" ColumnDefinitions="*,Auto">
                                 <VerticalStackLayout Grid.Column="0">
-                                    <Label Text="NombreUsuario" FontAttributes="Bold" FontSize="14" />
-                                    <Label Text="dd/MM/yyyy" FontSize="11" TextColor="{StaticResource DarkGray}" />
+                                    <Label Text="{Binding NombreUsuario}" FontAttributes="Bold" FontSize="14" />
+                                    <Label Text="{Binding FechaSubida}" FontSize="11" TextColor="{StaticResource DarkGray}" />
                                 </VerticalStackLayout>
                                 <Button
                                     Grid.Column="1"

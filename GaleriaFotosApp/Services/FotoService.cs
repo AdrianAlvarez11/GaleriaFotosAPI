@@ -58,17 +58,22 @@ namespace GaleriaFotosApp.Services
                     using FileStream localFileStream =File.OpenWrite(localFilePath); //estas lineas comentadas son para guardar en el dispositivo
                     await sourceStream.CopyToAsync(localFileStream);
 
-                    byte[] buffer = new byte[sourceStream.Length];
-                    sourceStream.ReadExactly(buffer, 0, buffer.Length);
-
-                    var base64 = Convert.ToBase64String(buffer);
-
-                    await SubirFoto(base64);
+                    
 
                     return localFilePath;
                 }
             }
             return null;
         }
+
+        public async Task<List<FotoDto>> GetFotos()
+        {
+            var response = await client.GetFromJsonAsync<List<FotoDto>>("/fotos") ?? [];
+            foreach (var archivo in response)
+            {
+                archivo.NombreArchivo = $"https://localhost:44303/uploads/{archivo.Id}.jpg";
+            }
+            return response;
+        } 
     }
 }

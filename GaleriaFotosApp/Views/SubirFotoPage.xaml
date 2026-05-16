@@ -29,7 +29,7 @@
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
                         TextColor="{StaticResource DarkGray}" />
-                    <Image Source="{Binding Imagen}"
+                    <Image Source="{Binding RutaImagen}"
                         Aspect="AspectFill" />
                 </Grid>
             </Border>
